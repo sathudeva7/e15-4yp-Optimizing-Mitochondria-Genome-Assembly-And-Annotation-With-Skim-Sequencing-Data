@@ -3,8 +3,8 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: e15-4yp-Pipeline-for-Isolation-of-Fast-evolving-ITS-Regions-from-Skim-Sequencing-Data
-title: A User-friendly Pipeline for Isolation of Fast-evolving Internal Transcribed Spacer(ITS) Regions from Skim Sequencing Data
+repository-name: e15-4yp-Optimizing-Mitochondria-Genome-Assembly-And-Annotation
+title: Optimizing the procedure of mitochondrial genome assembly and annotation
 ---
 
 
