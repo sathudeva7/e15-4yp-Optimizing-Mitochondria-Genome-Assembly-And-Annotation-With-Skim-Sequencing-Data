@@ -4,8 +4,7 @@ permalink: index.html
 
 # Please update this with your repository name and title
 repository-name: e15-4yp-Optimizing-Mitochondria-Genome-Assembly-And-Annotation-With-Skim-Sequencing-Data
-title:
-Optimizing Mitochondria GenomeAssembly And Annotation WithSkim Sequencing Data
+title:Optimizing Mitochondria GenomeAssembly And Annotation WithSkim Sequencing Data
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
