@@ -53,11 +53,11 @@ There are several assembly pipelines suggested for assembling genome, below are 
 
 Here let's discuss the tools that are used specifically for mitochondrial genome assembly
 
-1.NovoPlasty
+#NovoPlasty
 In NOVOPlasty there is a way to assemble genome from skim sequenced data, we can either assemble a whole organelle genome or isolate mitochondrial genome first and assemble it later. The best strategy for assembling depends on available data-set,computational power and reference genome availability. This tool uses a new algorithm to do the de novo assembly which is known as seed-extension, by this method NOVOPlasty claims that it assemble genome as accurate as other reference based assemblers such as MITObim,MIRA,ARC,SOAPdenova2.
 NOVOPlasty decreases computational complexity by storing the reads in a hash table and seed-extend it. As this tool claims it took 11 minutes duration and 15 GB memory to assemble 99.98% of G.intermedia mitochondrion genome with 100 % accuracy where MITObim took 4777 minutes,63.4 GB memory to assemble 99.95\% of genome with 99.93% accuracy and SOAPdenovo2 took  19 minutes,27 GB memory to assemble 99.98% of genome with 99.98% accuracy.
 
-2.Norgal
+#Norgal
 Norgal is a tool used to extract mitochondria genome from WGS data and assemble it using de nova assembly. In previous methods like in MToolBox there is a need for reference mtDNA either from database or user input, but in Norgal it identifies the high frequency kmers (string fragmentations of genome) from WGS data to extract and assemble the mtDNA. Norgal is able to extract mtDNA by calculate the read depth of genome and assume the reads that have more read depth (frequency) than a specified threshold (nuclear read depth) are from mtDNA. Then it performs de nova assembly on those reads to assemble the genome.
 The whole pipeline of Norgal is
 Pre-processing reads -> Estimating nuclear read depth threshold -> Remove reads based on k-mer occurrences -> Assembly with high-frequency k-mers -> Annotation and validation
