@@ -44,9 +44,7 @@ the modern approach is next generation sequencing.
 Ilumina sequencing is one of the broadly used next generation sequencing method and this method produce large number of high precision sequencing  short reads whereas other older methods produce longer reads.So the computational complexity of assembling back this large amount of read is high but cost efficient.
 Here we mainly discuss on low coverage sequencing data assembly.The sequencing data consist of multiple copies of same genome in low coverage data the number of copies are relatively lower than high coverage data.
 
-There are several problems faced by biologists while and after assembling genome like low accurate assembly of genome and slow assembly process. In this report we address these problems and proposing optimal solution to these problems, in addition to these generic problems this project also focus on mitochondria genome extraction from whole genome sequencing data and working with skim sequenced low coverage data.
-
-Before developing the pipeline for genome assembly the existing tools for genome assembly were studied.This report contain a review of those tools and in future it was planned to recommend biologists optimal tools for their type of assembly. The implementation plan and the steps done to assemble  Cinnamomum verum(Ceylon cinnamon tree)- genome is discussed here.Finally an implementation plan for developing a new pipeline for optimize mitochondria genome assembly and annotation is stated.
+In this project we examined the tools used for mitochondrial genome assembly by assembling differnt datasets and measured the parameters that make impact in the assembly process. From the results we obtained from the experiment we made decisions of doing mitochondrial genome assembly.
 
 ## Related works
 There are several assembly pipelines suggested for assembling genome, below are the narrow downed pipelines/ tools used for mitochondrial genome assembly. There are two common approaches for assembly genome one is De novo assembly another one is Reference based alignment.Some tools use one of these approaches and some use hybrid approach consisting both.
@@ -71,6 +69,7 @@ SMART: Statistical Mitogenome Assembly with Repeats
 
 Statistical Mitogenome Assembly with Repeats (SMART) is yet another proposed pipeline for automated assembly of complete circular mitochondrial genomes from WGS data. Reference based assembly tools are faster but they can't be used to assemble completely new mtDNA, Norgal can assemble the completely new genome by using de nova assembly but it requires high coverage reads and cause high runtime and memory. In Norgal and tools like it they attempt to remove reads from the nuclear genome by performing an assembly of the full set of reads and then using the read coverage of the longest contigs to estimate the coverage of the nuclear genome but in SMART it estimates the mean and standard deviation of mtDNA k-mers in WGS reads based on a seed sequence (This is not widely used approach of sequencing), then select the reads which has k-mer counts falling within three standard deviations of the estimated mean.
 SMART claims that it provides better results than other tools like  Norgal, NOVOPlasty, PlasmidSPAdes and MToolBox but the run time and memory usage of this pipeline is not yet discussed.
+
 ## Methodology
 
 ## Experiment Setup and Implementation
