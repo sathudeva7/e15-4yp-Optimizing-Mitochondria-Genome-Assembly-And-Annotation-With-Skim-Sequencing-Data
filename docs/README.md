@@ -66,6 +66,11 @@ Norgal is a tool used to extract mitochondria genome from WGS data and assemble 
 The whole pipeline of Norgal is
 Pre-processing reads -> Estimating nuclear read depth threshold -> Remove reads based on k-mer occurrences -> Assembly with high-frequency k-mers -> Annotation and validation
 Norgal has more advantages than its earlier predecessors like MToolBox,MITOBim and NOVOPlasty. Still it has some flaws in its pipelines, like the high run time, Norgal is slower than above mention tools also it consume more memory (the peak usage was 38-48GB where MITOBim needs only 1-13 GB) and it cannot be applied to organisms that have low copy numbers of samples cause Norgal needs a high depth coverage of reads as the current project we are working mainly focus on extract and assemble genome with low coverage reads which will be an advancement to this tool. Overall as they claim Norgal is the current best when there are no reference genomes available.
+
+SMART: Statistical Mitogenome Assembly with Repeats
+
+Statistical Mitogenome Assembly with Repeats (SMART) is yet another proposed pipeline for automated assembly of complete circular mitochondrial genomes from WGS data. Reference based assembly tools are faster but they can't be used to assemble completely new mtDNA, Norgal can assemble the completely new genome by using de nova assembly but it requires high coverage reads and cause high runtime and memory. In Norgal and tools like it they attempt to remove reads from the nuclear genome by performing an assembly of the full set of reads and then using the read coverage of the longest contigs to estimate the coverage of the nuclear genome but in SMART it estimates the mean and standard deviation of mtDNA k-mers in WGS reads based on a seed sequence (This is not widely used approach of sequencing), then select the reads which has k-mer counts falling within three standard deviations of the estimated mean.
+SMART claims that it provides better results than other tools like  Norgal, NOVOPlasty, PlasmidSPAdes and MToolBox but the run time and memory usage of this pipeline is not yet discussed.
 ## Methodology
 
 ## Experiment Setup and Implementation
