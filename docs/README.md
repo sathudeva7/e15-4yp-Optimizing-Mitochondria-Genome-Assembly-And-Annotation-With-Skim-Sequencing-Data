@@ -18,7 +18,6 @@ title: Optimizing the procedure of mitochondrial genome assembly and annotation
 - E/15/330, K.Sathurshan, [email](mailto:name@email.com)
 - E/15/366, S.Thinesh, [email](mailto:name@email.com)
 - E/15/373, R.Vaheesan, [email](mailto:name@email.com)
--
 #### Supervisors
 
 - Dr. Asitha Bandaranayake, [email](mailto:asithab@eng.pdn.ac.lk)
