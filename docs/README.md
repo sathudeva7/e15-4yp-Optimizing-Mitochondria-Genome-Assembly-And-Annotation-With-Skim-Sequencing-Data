@@ -3,8 +3,9 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-4yp-project-template
+repository-name: e15-4yp-Optimizing-Mitochondria-Genome-Assembly-And-Annotation-With-Skim-Sequencing-Data
 title:
+Optimizing Mitochondria GenomeAssembly And Annotation WithSkim Sequencing Data
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
@@ -13,14 +14,14 @@ title:
 
 #### Team
 
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
-
+- E/15/330, K.Sathurshan, [email](mailto:name@email.com)
+- E/15/366, S.Thinesh, [email](mailto:name@email.com)
+- E/15/373, R.Vaheesan, [email](mailto:name@email.com)
+-
 #### Supervisors
 
-- Name, [email](mailto:name@eng.pdn.ac.lk)
-- Name, [email](mailto:name@eng.pdn.ac.lk)
+- Dr. Asitha Bandaranayake, [email](mailto:asithab@eng.pdn.ac.lk)
+- Prof. Pradeepa Bandaranayake, [email](mailto:pradeepag@agri.pdn.ac.lk)
 
 #### Table of content
 
@@ -28,7 +29,7 @@ title:
 2. [Related works](#related-works)
 3. [Methodology](#methodology)
 4. [Experiment Setup and Implementation](#experiment-setup-and-implementation)
-5. [Results and Analysis](#results-and-analysis)
+5. [Results and Analysis](#results-and-analysis)-
 6. [Conclusion](#conclusion)
 7. [Publications](#publications)
 8. [Links](#links)
