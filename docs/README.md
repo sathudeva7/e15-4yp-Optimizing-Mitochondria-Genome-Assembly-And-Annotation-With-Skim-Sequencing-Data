@@ -49,7 +49,13 @@ There are several problems faced by biologists while and after assembling genome
 Before developing the pipeline for genome assembly the existing tools for genome assembly were studied.This report contain a review of those tools and in future it was planned to recommend biologists optimal tools for their type of assembly. The implementation plan and the steps done to assemble  Cinnamomum verum(Ceylon cinnamon tree)- genome is discussed here.Finally an implementation plan for developing a new pipeline for optimize mitochondria genome assembly and annotation is stated.
 
 ## Related works
+There are several assembly pipelines suggested for assembling genome, below are the narrow downed pipelines/ tools used for mitochondrial genome assembly. There are two common approaches for assembly genome one is De novo assembly another one is Reference based alignment.Some tools use one of these approaches and some use hybrid approach consisting both.
 
+Here let's discuss the tools that are used specifically for mitochondrial genome assembly
+
+1.NovoPlasty
+In NOVOPlasty there is a way to assemble genome from skim sequenced data, we can either assemble a whole organelle genome or isolate mitochondrial genome first and assemble it later. The best strategy for assembling depends on available data-set,computational power and reference genome availability. This tool uses a new algorithm to do the de novo assembly which is known as seed-extension, by this method NOVOPlasty claims that it assemble genome as accurate as other reference based assemblers such as MITObim,MIRA,ARC,SOAPdenova2.
+NOVOPlasty decreases computational complexity by storing the reads in a hash table and seed-extend it. As this tool claims it took 11 minutes duration and 15 GB memory to assemble 99.98% of G.intermedia mitochondrion genome with 100 % accuracy where MITObim took 4777 minutes,63.4 GB memory to assemble 99.95\% of genome with 99.93% accuracy and SOAPdenovo2 took  19 minutes,27 GB memory to assemble 99.98% of genome with 99.98% accuracy.
 ## Methodology
 
 ## Experiment Setup and Implementation
