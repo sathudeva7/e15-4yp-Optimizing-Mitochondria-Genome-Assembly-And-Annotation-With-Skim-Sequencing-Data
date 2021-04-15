@@ -78,7 +78,13 @@ the tools that are dedicated for mitochondrial genome assembly. We then analyze 
 Genome assembly remains a challenging computational problem, the next-generation sequencing technologies which generate a greater amount of data and 
 make the assembly process more complex. There is a huge demand for a pipeline that will assemble a genome quickly and accurately. 
 In this next-generation sequencing, the results are short reads, so we mainly focused on the tools that do short read assembly of mitochondria genome.
-    
+
+Conceptual Design
+<img src="data/Fig5.jpg" alt="conceptual design" class="inline"/>
+
+
+
+
 ## Experiment Setup and Implementation
 
 ## Results and Analysis
