@@ -81,9 +81,23 @@ In this next-generation sequencing, the results are short reads, so we mainly fo
 
 Conceptual Design
 <img src="data/Fig5.jpg" alt="conceptual design" class="inline"/>
+<br>
 
 Analyzing Tools
-All the tools used for the mitochondrial genome assembly are having many common functionalities and some unique functionalities, the common functionalities in an assembly procedure is shown in below figure
+
+All the tools used for the mitochondrial genome assembly are having many common functionalities and some unique functionalities, the common functionalities in an assembly procedure is shown in below figure.
+
+<img src="data/fig3.jpg" alt="canalyzing tools" class="inline"/>
+
+The data set used for assembly can be obtained from GenBank database https://www.ncbi.nlm.nih.gov/genbank/ and Europian Bioinformatics Institute database https://www.ebi.ac.uk/Or from the sequencing (mainly biologists use assembly tools for Common Assembly Design assemble the sequences they obtained) .Other than these common functionalities, there are some uniqueness in these tools like algorithms used and applicable data set.The algorithms used for assembling a genome are, De Novo, Reference Based Alignment and Seed and Extend.
+
+Here in these algorithms the De Novo assembly doesn’t need any genomes as reference,the reference based assembly requires a reference genome to assemble and in seed and extend method, the assembly starts from the seed input and further builds from right and left side of the seed. All reads used for these tools are paired end reads .In“short-read” sequencing, intact genomics DNA is sheared into several million short DNA fragments called “reads”. Individual reads can be paired together to create paired-end reads, which offers some benefits for downstream bioinformatics data analysis algorithms.
+
+Work flow
+
+The work flow is designed as these steps Data collection,Quality check raw reads,Assemble using short listed tools,Obtain circular mitochondrial genome Or Contigs,Quality assessment Annotation and Grouping Assembly details. We collect the data suitable for our tools as mentioned earlier all tools required pairedend reads for assembly other than that Novoplasty SMART required seed input mitobimrequired reference genome and Novoplasty required additional chloroplast genome of samespecies for mitochondrial genome assembly (to eliminate the chloroplast genome fromWGS data). Then we assembled the genome using all these tools and we assembled thesedatasets after the assembly we obtained either a complete circular genome or contigs ofthe genome [26]. All dataset (dataset are described in chapter 4) other than cinnamonverum we chosen have the originally assembled mitochondrial genomes we assembledthose dataset again for the purpose of examine the tools. So if we get a complete genomeassembly we checked the quality and accuracy of the assembly by comparing with theoriginal genome or else if we had contigs we checked the quality with quast tool. Then wegroup the assemblly details according to the assembly method,dataset size and assemblingtools.
+
+<img src="data/WorkFlow.jpg" alt="canalyzing tools" class="inline"/>
 
 
 ## Experiment Setup and Implementation
