@@ -82,7 +82,9 @@ In this next-generation sequencing, the results are short reads, so we mainly fo
 Conceptual Design
 <img src="data/Fig5.jpg" alt="conceptual design" class="inline"/>
 
-
+Analyzing Tools
+All the tools used for the mitochondrial genome assembly are having many common functionalities and some unique functionalities, the common functionalities in an assembly procedure is shown in below figure.
+<img src="data/fig3.jpg" alt="conceptual design" class="inline"/>
 
 
 ## Experiment Setup and Implementation
