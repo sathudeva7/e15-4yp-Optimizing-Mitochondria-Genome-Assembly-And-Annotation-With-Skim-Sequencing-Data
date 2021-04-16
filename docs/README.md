@@ -81,13 +81,113 @@ In this next-generation sequencing, the results are short reads, so we mainly fo
 
 Conceptual Design
 <img src="data/Fig5.jpg" alt="conceptual design" class="inline"/>
+<br>
 
-Analyzing Tools
-All the tools used for the mitochondrial genome assembly are having many common functionalities and some unique functionalities, the common functionalities in an assembly procedure is shown in below figure.
-<img src="data/fig3.jpg" alt="conceptual design" class="inline"/>
 
 
 ## Experiment Setup and Implementation
+
+Prototype
+
+We design an experimental setup to compare the tools that are specifically build to do mitochondrial assembly. In our experiment we first shortlist 4 tools for analysis they are: NovoPlasty: seed and extend algorithm & De novo assembly, Norgal : De novo assembly(No need for seeds),SMART : seed-and-extend algorithm & De novo assembly and Mitobim : Reference based assembly.
+
+Data Collection
+
+We choose the seed and reference genome of the datasets by analyzing their phylogeny. Available closest relatives of the species are used as seeds and reference genome. Here we used Cinnamomum Verum which is 1.5GB, Solanum Melongena which is 5GB, Homosapien Sapien which is 12MB and Oncorhynchus mykiss which is 12GB. Here we used Cinnamon Verum, Arabidopsis Thaliana, Oryza sativa, Solanum Melongena and output from Norgal assembly as seeds for NovoPlasty while assembling Cinnamomum Verum and Solanum Melongena. We used Arabidopsis Thaliana as a seed for SMART while assembling Cinnamomum Verum. We used Pan troglodytes seed for NovaPlasty while assembling Homosapien Sapien. For the NovaPlasty assembly of Oncorhynchus mykiss, we used T.thymallus COI sequence as seed. For mitobim we didn't use seeds but used references genome of close species so for Cinnamomum Verum only available closest species is Arabidopsis Thaliana mitochondrial genome, Solanum Melongena (egg plant) we used Solanum macrocarpon(African eggplant) mitochondrial genome, for Homosapien Sapien (human) we used Pan troglodytes(Chimpanzee) mitochondrial genome and for Oncorhynchus mykiss we used T.thymallus mitochondrial genome.
+
+Tools
+
+In our experiment we first shortlist 4 tools for analysis they are, NovoPlasty uses seed and extend algorithm where a seed input is given along the dataset so the assembly can begin with that seed. The de novo assembly starts from these seed contigs. Norgal uses De novo assembly so there are no need for seeds. SMART uses seed and extend algorithm and follows De novo assembly. Mitobim is a reference based assembly tool. These 4 tools have their own uniqueness in assembling mitochondrial genome.
+
+Server Details
+
+University of Peradeniya, Aiken Server(RAM - 252GB Number of CPU cores - 32 cores) and AgBC Server (RAM - 262GB Number of CPU cores - 48 cores)
+
+Configure MitoBim Tool
+
+We used docker image for MitoBim tool. MITObim image contains a stripped down version of Ubuntu 16.04 and all necessary executables and dependencies to run the latest version of MITObim. Here we show how to recover the complete mitochondrial genome of Thymallus thymallus using the mitochondrial genome of Salvelinus alpinus as a starting reference. We used AgBc server for run mitobim assembly.
+
+Step 1 - specified a working directory on the machine that will be synced with the /home/data directory in the image and enter the self contained shell environment to run MITObim
+
+    WORKING_DIR=/your/desired/working/dir
+    sudo docker run -i -t -v $WORKING_DIR/:/home/data
+        chrishah/mitobim /bin/bash
+
+Step 2 - Test the wrapper script by doing
+
+    ~/PATH/TO/MITObim.pl
+
+
+Step 3 - Do the mapping assembly with MIRA 4. MIRA is a Sequence assembler and sequence mapping for whole genome shotgun and EST / RNASeq sequencing data. 
+
+
+    ln -s /PATH/TO/testdata1/Tthymallus-150bp-300sd50-interleaved.fastq 
+        reads.fastq
+    ln -s /PATH/TO/testdata1/Salpinus-mt-genome-NC_000861.fasta reference.fa
+
+
+Step 4 - Create the manifest file and specifying the parameters for the MIRA assembly
+
+
+    echo -e "\n#manifest file for basic mapping assembly with 
+        illumina data using  MIRA 4\n\nproject =  initial-mapping
+        -testpool-to-Salpinus-mt\n\njob=genome,mapping,accurate\n\
+        nparameters = -NW:mrnl=0 -AS:nop=1 SOLEXA_SETTINGS -CO:
+        msr=no\n\nreadgroup\nis_reference\ndata = reference.fa\nstrain =
+        Salpinus-mt-genome\n\nreadgroup = reads\ndata = reads.fastq\
+        ntechnology = solexa\nstrain = testpool\n" > manifest.conf
+
+
+
+ Step 5 - run MIRA 4
+
+    mira manifest.conf
+
+
+Step 6 - Baiting and iterative mapping using the MITObim.pl script
+
+    /PATH/TO/MITObim.pl -start 1 -end 10 -sample testpool -ref
+        Salpinus_mt_genome -readpool reads.fastq -maf
+        initial-mapping-testpool-to-Salpinus-mt_assembly
+        /initial-mapping-testpool-to-Salpinus-mt_d_results
+        /initial-mapping-testpool-to-Salpinus-mt_out.maf &> log
+
+
+Step 7 - After the process has finished looking into the log file
+
+    tail log
+    
+    
+Configure Norgal Tool
+
+Norgal uses kmer frequencies to try to assemble the mitochondrial genome from NGS sequencing reads (currently only Illumina paired end reads are supported). It requires Python2.7+ or Python3, Java and matplotlib. The size of our input data determines how much memory we'll use. Norgal has been tested on computers with 16GB, 32GB, and 64GB of RAM. In other words, if our reads are just a few GB each, it should work; but, if our reads are 12 GB each, and our machine only has 12 GB of RAM, it will almost certainly not work, and we'll have to run it on a node or anything similar. But in our case, we used Aiken and Agbc server both are 256GB RAM. So we did not address any issue during the assembly.
+
+Step 1 - Download the program
+
+    git clone https://github.com/kosaidtu/norgal.git
+
+
+Step 2 - Execute the norgal.py script
+
+    python norgal/norgal.py -h
+
+
+Step 3 - Run the paired end data(f.fq and r.fq) 
+
+    python norgal.py -i f.fq r.fq -o norgal_output --blast
+
+
+Configure NOVOPlasty Tool
+
+NOVOPlasty is a de novo assembler and heteroplasmy/variance caller for short circular genomes. First, we have to find a suitable seed and the seed file should be formatted in the same way as a regular fasta file. We need to concern the seed sequences that are identical in mitochondrial and chloroplast genomes should be avoided. After that we have to create a configuration file, here we have to specify the path of the dataset, k-mer number, Reference sequence path and Seed inout path. Then finally we have to run the NOVOPlasty with configuration file.
+
+    perl NOVOPlasty4.3.pl -c config.txt
+
+Configure SMART Web Interface
+
+The Figure below shows the SMART Web Interface here we have to input the paired end read data and seed file then it will output the assembly and annotation details.
+
+<img src="data/SMART.JPG" alt="SMART" class="inline"/>
 
 ## Results and Analysis
 
