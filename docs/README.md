@@ -249,7 +249,7 @@ When we asembled Oncorhynchus mykiss using MitoBim tool, we got Complete Circula
 
 Assembling a mitochondrial genome very accurately and efficiently for all kind of datasets is what everyone involved with genomics are looking forwards and this study also going in that way. We have assembled 4 type of dataset with four tools and analyzed it's performance and accuracy, from the results we obtained we can come to some conclusions on assembling mitochondrial genome. The conclusions we derived from the results can be divided into 3 scenarios which are Dataset based, Runtime based and Resource Requirement. From the 1st scenario we can conclude that all a good assembly needed is a good dataset, in the sense of dataset it means the seeds,reference genome and the size of the dataset. If the size is small the accuracy is much better.If the seeds are good enough we can get good acccurate and efficient assembly from NovoPlasty and SMART tools.But finding such seeds is a crucial task. The second scenario is the run time of the assembly , if there are neither reference genome nor seeds we can still assemble the dataset using Norgal but it consumes more time. As from these two scenarios a pipeline can be developed as shown in the below figure that in case if there are no good seeds we can use the Norgal assembly output of the same species as seed and it will give better assembly.
 
-<img src="data/mykiss.jpeg" alt="mykiss" class="inline"/>
+<img src="data/Pipeline.JPG" alt="mykiss" class="inline"/>
 
 
 ## Publications
